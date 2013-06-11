@@ -1,7 +1,18 @@
 AccountDetailsForm:
 
 <AccountDetailsForm>:
-    Label:
-        text: 'Hello World'
-    Label:
-        text: 'Another World'
+    orientation: "vertical"
+    GridLayout:
+        cols: 2
+        Label:
+            text: "Server"
+        TextInput:
+        Label:
+            text: "Username"
+        TextInput:
+        Label:
+            text: "Password"
+        TextInput:
+            password: True
+    Button:
+        text: "Login"
