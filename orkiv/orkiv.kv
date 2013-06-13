@@ -1,26 +1,28 @@
 AccountDetailsForm:
 
 <AccountDetailsForm>:
-    orientation: "vertical"
-    height: "200dp"
-    size_hint_y: None
-    GridLayout:
-        cols: 2
-        row_default_height: "40dp"
-        row_force_default: True
-        spacing: "10dp"
-        padding: "10dp"
-        Label:
-            text: "Server"
-        TextInput:
-        Label:
-            text: "Username"
-        TextInput:
-        Label:
-            text: "Password"
-        TextInput:
-            password: True
-    Button:
+    anchor_y: "top"
+    BoxLayout:
+        orientation: "vertical"
+        height: "200dp"
         size_hint_y: None
-        height: "40dp"
-        text: "Login"
+        GridLayout:
+            cols: 2
+            row_default_height: "40dp"
+            row_force_default: True
+            spacing: "10dp"
+            padding: "10dp"
+            Label:
+                text: "Server"
+            TextInput:
+            Label:
+                text: "Username"
+            TextInput:
+            Label:
+                text: "Password"
+            TextInput:
+                password: True
+        Button:
+            size_hint_y: None
+            height: "40dp"
+            text: "Login"
