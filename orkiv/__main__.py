@@ -3,7 +3,8 @@ from kivy.uix.anchorlayout import AnchorLayout
 
 
 class AccountDetailsForm(AnchorLayout):
-    pass
+    def login(self):
+        print("Click the goddamn button")
 
 
 class Orkiv(App):
