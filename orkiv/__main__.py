@@ -9,7 +9,9 @@ class AccountDetailsForm(AnchorLayout):
     password_box = ObjectProperty()
 
     def login(self):
-        print("Click the goddamn button")
+        print(self.server_box.text)
+        print(self.username_box.text)
+        print(self.password_box.text)
 
 
 class Orkiv(App):
