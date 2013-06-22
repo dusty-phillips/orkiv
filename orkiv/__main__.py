@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.properties import ObjectProperty
+from sleekxmpp import ClientXMPP
 
 
 class AccountDetailsForm(AnchorLayout):
@@ -15,6 +16,12 @@ class AccountDetailsForm(AnchorLayout):
 
 
 class Orkiv(App):
-    pass
+
+    def connect_to_jabber(self, jabber_id, password):
+        self.xmpp = ClientXMPP(jabber_id, password)
+        self.xmpp.connect()
+        self.xmpp.process()
+        self.xmpp.send_presence()
+        self.xmpp.get_roster()
 
 Orkiv().run()
