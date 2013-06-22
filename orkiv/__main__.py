@@ -10,9 +10,13 @@ class AccountDetailsForm(AnchorLayout):
     password_box = ObjectProperty()
 
     def login(self):
-        print(self.server_box.text)
-        print(self.username_box.text)
-        print(self.password_box.text)
+        jabber_id = self.username_box.text + "@" + self.server_box.text
+        password = self.password_box.text
+
+        app = Orkiv.get_running_app()
+        app.connect_to_jabber(jabber_id, password)
+        print(app.xmpp.client_roster.keys())
+        app.xmpp.disconnect()
 
 
 class Orkiv(App):
