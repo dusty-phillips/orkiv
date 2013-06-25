@@ -2,6 +2,20 @@ from kivy.app import App
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.properties import ObjectProperty
 from sleekxmpp import ClientXMPP
+from kivy.uix.textinput import TextInput
+
+
+class AccountDetailsTextInput(TextInput):
+    next = ObjectProperty()
+
+    def _keyboard_on_key_down(self, window, keycode, text, modifiers):
+        if keycode[0] == 9:  # 9 is the keycode for <tab>
+            self.next.focus = True
+        elif keycode[0] == 13:  # 13 is the keycode for <enter>
+            self.parent.parent.parent.login()  # this is not future friendly
+        else:
+            super(AccountDetailsTextInput, self)._keyboard_on_key_down(
+                    window, keycode, text, modifiers)
 
 
 class AccountDetailsForm(AnchorLayout):
