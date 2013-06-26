@@ -17,16 +17,19 @@ AccountDetailsForm:
             padding: "10dp"
             Label:
                 text: "Server"
-            TextInput:
+            AccountDetailsTextInput:
                 id: server_input
+                next: username_input
             Label:
                 text: "Username"
-            TextInput:
+            AccountDetailsTextInput:
                 id: username_input
+                next: password_input
             Label:
                 text: "Password"
-            TextInput:
+            AccountDetailsTextInput:
                 password: True
+                next: server_input
                 id: password_input
         Button:
             size_hint_y: None
