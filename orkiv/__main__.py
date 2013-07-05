@@ -81,5 +81,8 @@ class Orkiv(App):
             self.xmpp.abort()
         self.xmpp = None
 
+    def on_stop(self):
+        self.disconnect_xmpp()
+
 
 Orkiv().run()
