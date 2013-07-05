@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.properties import ObjectProperty
 from sleekxmpp import ClientXMPP
+from sleekxmpp.exceptions import XMPPError
 from kivy.uix.textinput import TextInput
 from kivy.uix.modalview import ModalView
 from kivy.uix.label import Label
@@ -45,7 +46,10 @@ class Orkiv(App):
 
     def connect_to_jabber(self, jabber_id, password):
         self.xmpp = ClientXMPP(jabber_id, password)
-        self.xmpp.connect()
+        self.xmpp.reconnect_max_attempts = 1
+        connected = self.xmpp.connect()
+        if not connected:
+            raise XMPPError("unable to connect")
         self.xmpp.process()
         self.xmpp.send_presence()
         self.xmpp.get_roster()
