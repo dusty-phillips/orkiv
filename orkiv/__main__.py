@@ -62,6 +62,9 @@ class AccountDetailsForm(AnchorLayout):
 
 
 class Orkiv(App):
+    def __init__(self):
+        super(Orkiv, self).__init__()
+        self.xmpp = None
 
     def connect_to_jabber(self, jabber_id, password):
         self.xmpp = ClientXMPP(jabber_id, password)
