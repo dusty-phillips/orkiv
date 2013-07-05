@@ -3,6 +3,7 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.properties import ObjectProperty
 from sleekxmpp import ClientXMPP
 from sleekxmpp.exceptions import XMPPError
+from sleekxmpp.jid import InvalidJID
 from kivy.uix.textinput import TextInput
 from kivy.uix.modalview import ModalView
 from kivy.uix.label import Label
@@ -16,6 +17,17 @@ class ConnectionModal(ModalView):
         self.add_widget(self.label)
         self.jabber_id = jabber_id
         self.password = password
+
+    def connect_to_jabber(self):
+        app = Orkiv.get_running_app()
+        try:
+            app.connect_to_jabber(self.jabber_id, self.password)
+            self.label.text = "\n".join(app.xmpp.client_roster.keys())
+        except (XMPPError, InvalidJID):
+            self.label.text = "Sorry, couldn't connect, check your credentials"
+        finally:
+            if hasattr(app, "xmpp") and app.xmpp:
+                app.xmpp.disconnect()
 
 
 class AccountDetailsTextInput(TextInput):
