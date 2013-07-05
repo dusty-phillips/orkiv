@@ -17,6 +17,7 @@ class ConnectionModal(ModalView):
         self.add_widget(self.label)
         self.jabber_id = jabber_id
         self.password = password
+        self.on_open = self.connect_to_jabber
 
     def connect_to_jabber(self):
         app = Orkiv.get_running_app()
