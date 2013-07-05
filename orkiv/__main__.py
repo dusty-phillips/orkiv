@@ -32,9 +32,7 @@ class ConnectionModal(ModalView):
             button.height = "40dp"
             button.bind(on_press=self.dismiss)
             self.add_widget(button)
-        finally:
-            if hasattr(app, "xmpp") and app.xmpp:
-                app.xmpp.disconnect()
+            app.disconnect_xmpp()
 
 
 class AccountDetailsTextInput(TextInput):
