@@ -3,6 +3,18 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.properties import ObjectProperty
 from sleekxmpp import ClientXMPP
 from kivy.uix.textinput import TextInput
+from kivy.uix.modalview import ModalView
+from kivy.uix.label import Label
+
+
+class ConnectionModal(ModalView):
+    def __init__(self, jabber_id, password):
+        super(ConnectionModal, self).__init__(auto_dismiss=False,
+            anchor_y="bottom")
+        self.label = Label(text="Connecting to %s..." % jabber_id)
+        self.add_widget(self.label)
+        self.jabber_id = jabber_id
+        self.password = password
 
 
 class AccountDetailsTextInput(TextInput):
