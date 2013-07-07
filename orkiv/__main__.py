@@ -25,7 +25,8 @@ class ConnectionModal(ModalView):
         app = Orkiv.get_running_app()
         try:
             app.connect_to_jabber(self.jabber_id, self.password)
-            self.label.text = "\n".join(app.xmpp.client_roster.keys())
+            app.root.show_buddy_list()
+            self.dismiss()
         except (XMPPError, InvalidJID):
             self.label.text = "Sorry, couldn't connect, check your credentials"
             button = Button(text="Try Again")
