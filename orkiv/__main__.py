@@ -65,7 +65,10 @@ class BuddyList(BoxLayout):
 
 
 class OrkivRoot(BoxLayout):
-    pass
+    def show_buddy_list(self):
+        self.clear_widgets()
+        self.buddy_list = BuddyList()
+        self.add_widget(self.buddy_list)
 
 
 class Orkiv(App):
