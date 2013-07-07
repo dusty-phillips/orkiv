@@ -8,6 +8,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.modalview import ModalView
 from kivy.uix.label import Label
 from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
 
 
 class ConnectionModal(ModalView):
@@ -57,6 +58,14 @@ class AccountDetailsForm(AnchorLayout):
         jabber_id = self.username_box.text + "@" + self.server_box.text
         modal = ConnectionModal(jabber_id, self.password_box.text)
         modal.open()
+
+
+class BuddyList(BoxLayout):
+    pass
+
+
+class OrkivRoot(BoxLayout):
+    pass
 
 
 class Orkiv(App):
