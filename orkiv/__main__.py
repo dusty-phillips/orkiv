@@ -62,7 +62,12 @@ class AccountDetailsForm(AnchorLayout):
 
 
 class BuddyList(BoxLayout):
-    pass
+    list_view = ObjectProperty()
+
+    def __init__(self):
+        super(BuddyList, self).__init__()
+        self.app = Orkiv.get_running_app()
+        self.list_view.adapter.data = sorted(self.app.xmpp.client_roster.keys())
 
 
 class OrkivRoot(BoxLayout):
