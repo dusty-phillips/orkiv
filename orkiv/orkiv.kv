@@ -1,3 +1,6 @@
+#:import la kivy.adapters.listadapter
+#:import lbl kivy.uix.label
+
 OrkivRoot:
 
 <OrkivRoot>:
@@ -44,3 +47,4 @@ OrkivRoot:
     list_view: list_view
     ListView:
         id: list_view
+        adapter: la.ListAdapter(data=[], cls=lbl.Label)
