@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.properties import ObjectProperty
+from kivy.properties import StringProperty
 from sleekxmpp import ClientXMPP
 from sleekxmpp.exceptions import XMPPError
 from sleekxmpp.jid import InvalidJID
@@ -59,6 +60,10 @@ class AccountDetailsForm(AnchorLayout):
         jabber_id = self.username_box.text + "@" + self.server_box.text
         modal = ConnectionModal(jabber_id, self.password_box.text)
         modal.open()
+
+
+class BuddyListItem(BoxLayout):
+    text = StringProperty()
 
 
 class BuddyList(BoxLayout):
