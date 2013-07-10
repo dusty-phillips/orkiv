@@ -1,5 +1,5 @@
 #:import la kivy.adapters.listadapter
-#:import lbl kivy.uix.label
+#:import ok __main__
 
 OrkivRoot:
 
@@ -43,8 +43,14 @@ OrkivRoot:
             text: "Login"
             on_press: root.login()
 
+<BuddyListItem>:
+    size_hint_y: None
+    height: "100dp"
+    Label:
+        text: root.text
+
 <BuddyList>:
     list_view: list_view
     ListView:
         id: list_view
-        adapter: la.ListAdapter(data=[], cls=lbl.Label)
+        adapter: la.ListAdapter(data=[], cls=ok.BuddyListItem)
