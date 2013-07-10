@@ -45,9 +45,16 @@ OrkivRoot:
 
 <BuddyListItem>:
     size_hint_y: None
-    height: "100dp"
+    height: "40dp"
     Label:
-        text: root.text
+        text: root.jabberid
+    Label:
+        text: root.full_name
+    Label:
+        text: root.status_message
+    Label:
+        text: root.online_status
+
 
 <BuddyList>:
     list_view: list_view
