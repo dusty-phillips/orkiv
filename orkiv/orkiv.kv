@@ -60,4 +60,6 @@ OrkivRoot:
     list_view: list_view
     ListView:
         id: list_view
-        adapter: la.ListAdapter(data=[], cls=ok.BuddyListItem)
+        adapter:
+            la.ListAdapter(data=[], cls=ok.BuddyListItem,
+            args_converter=root.roster_converter)
