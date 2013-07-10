@@ -63,7 +63,10 @@ class AccountDetailsForm(AnchorLayout):
 
 
 class BuddyListItem(BoxLayout):
-    text = StringProperty()
+    jabberid = StringProperty()
+    full_name = StringProperty()
+    status_message = StringProperty()
+    online_status = StringProperty()
 
 
 class BuddyList(BoxLayout):
