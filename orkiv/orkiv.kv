@@ -46,6 +46,12 @@ OrkivRoot:
 <BuddyListItem>:
     size_hint_y: None
     height: "40dp"
+    canvas.before:
+        Color:
+            rgba: self.background
+        Rectangle:
+            pos: self.pos
+            size: self.size
     Label:
         text: root.jabberid
     Label:
