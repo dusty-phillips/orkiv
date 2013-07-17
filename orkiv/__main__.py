@@ -9,6 +9,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.modalview import ModalView
 from kivy.uix.label import Label
 from kivy.uix.button import Button
+from kivy.uix.listview import ListItemButton
 from kivy.uix.boxlayout import BoxLayout
 
 
@@ -62,7 +63,7 @@ class AccountDetailsForm(AnchorLayout):
         modal.open()
 
 
-class BuddyListItem(BoxLayout):
+class BuddyListItem(BoxLayout, ListItemButton):
     jabberid = StringProperty()
     full_name = StringProperty()
     status_message = StringProperty()
