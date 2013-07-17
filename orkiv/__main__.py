@@ -68,7 +68,6 @@ class BuddyListItem(BoxLayout, ListItemButton):
     full_name = StringProperty()
     status_message = StringProperty()
     online_status = StringProperty()
-    background = ObjectProperty()
 
 
 class BuddyList(BoxLayout):
@@ -97,9 +96,9 @@ class BuddyList(BoxLayout):
             result['online_status'] = "offline"
 
         if index % 2:
-            result['background'] = (0, 0, 0, 1)
+            result['background_color'] = (0, 0, 0, 1)
         else:
-            result['background'] = (0.05, 0.05, 0.07, 1)
+            result['background_color'] = (0.05, 0.05, 0.07, 1)
 
         return result
 
