@@ -73,3 +73,27 @@ OrkivRoot:
         adapter:
             la.ListAdapter(data=[], cls=ok.BuddyListItem,
             args_converter=root.roster_converter)
+
+<ChatWindow>:
+    orientation: "vertical"
+    chat_log_label: chat_log_label
+    send_chat_textinput: send_chat_textinput
+    Label:
+        text: "chatting with " + root.jabber_id
+        size_hint_y: None
+        height: "40dp"
+    Label:
+        id: chat_log_label
+    BoxLayout:
+        size_hint_y: None
+        height: "50dp"
+        Button:
+            size_hint_x: None
+            width: "70dp"
+            text: "Buddies"
+        TextInput:
+            id: send_chat_textinput
+        Button:
+            size_hint_x: None
+            width: "70dp"
+            text: "Send"
