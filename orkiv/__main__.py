@@ -103,6 +103,12 @@ class BuddyList(BoxLayout):
         return result
 
 
+class ChatWindow(BoxLayout):
+    jabber_id = StringProperty()
+    chat_log_label = ObjectProperty()
+    send_chat_textinput = ObjectProperty()
+
+
 class OrkivRoot(BoxLayout):
     def show_buddy_list(self):
         self.clear_widgets()
