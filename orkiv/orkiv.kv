@@ -47,6 +47,7 @@ OrkivRoot:
     size_hint_y: None
     height: "75dp"
     selected_color: (0.2, 0.1, 0.2, 1.0)
+    on_release: app.root.show_buddy_chat(self.jabberid)
 
     BoxLayout:
         size_hint_x: 3
@@ -91,6 +92,7 @@ OrkivRoot:
             size_hint_x: None
             width: "70dp"
             text: "Buddies"
+            on_release: app.root.show_buddy_list()
         TextInput:
             id: send_chat_textinput
         Button:
