@@ -1,3 +1,4 @@
+import datetime
 from kivy.app import App
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.properties import ObjectProperty
@@ -107,6 +108,16 @@ class ChatWindow(BoxLayout):
     jabber_id = StringProperty()
     chat_log_label = ObjectProperty()
     send_chat_textinput = ObjectProperty()
+
+    def send_message(self):
+        app = Orkiv.get_running_app()
+        app.xmpp.send_message(
+            mto=self.jabber_id,
+            mbody=self.send_chat_textinput.text)
+        self.chat_log_label.text += "(%s) Me: %s\n" % (
+                datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+                self.send_chat_textinput.text)
+        self.send_chat_textinput.text = ''
 
 
 class OrkivRoot(BoxLayout):
