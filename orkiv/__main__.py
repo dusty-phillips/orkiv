@@ -115,6 +115,11 @@ class OrkivRoot(BoxLayout):
         self.buddy_list = BuddyList()
         self.add_widget(self.buddy_list)
 
+    def show_buddy_chat(self, jabber_id):
+        self.remove_widget(self.buddy_list)
+        chat_window = ChatWindow(jabber_id=jabber_id)
+        self.add_widget(chat_window)
+
 
 class Orkiv(App):
     def __init__(self):
