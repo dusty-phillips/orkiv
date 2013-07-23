@@ -167,6 +167,7 @@ class Orkiv(App):
         self.xmpp.process()
         self.xmpp.send_presence()
         self.xmpp.get_roster()
+        self.xmpp.add_event_handler('message', self.root.handle_xmpp_message)
 
     def disconnect_xmpp(self):
         if self.xmpp and self.xmpp.state.ensure("connected"):
