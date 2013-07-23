@@ -140,6 +140,18 @@ class OrkivRoot(BoxLayout):
             self.chat_windows[jabber_id] = ChatWindow(jabber_id=jabber_id)
         self.add_widget(self.chat_windows[jabber_id])
 
+    def handle_xmpp_message(self, message):
+        if message['type'] not in ['normal', 'chat']:
+            return
+        jabber_id = message['from'].bare
+
+        if jabber_id not in self.chat_windows:
+            self.chat_windows[jabber_id] = ChatWindow(jabber_id=jabber_id)
+        self.chat_windows[jabber_id].chat_log_label.text += "(%s) %s: %s\n" % (
+                datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+                jabber_id,
+                message['body'])
+
 
 class Orkiv(App):
     def __init__(self):
