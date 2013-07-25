@@ -124,6 +124,7 @@ class ChatWindow(BoxLayout):
                 color,
                 escape_markup(sender),
                 escape_markup(message))
+        self.chat_log_label.parent.scroll_y = 0.0
 
 
 class OrkivRoot(BoxLayout):
