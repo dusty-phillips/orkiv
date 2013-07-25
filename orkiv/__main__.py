@@ -12,6 +12,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.listview import ListItemButton
 from kivy.uix.boxlayout import BoxLayout
+from kivy.utils import escape_markup
 
 
 class ConnectionModal(ModalView):
@@ -114,14 +115,15 @@ class ChatWindow(BoxLayout):
         app.xmpp.send_message(
             mto=self.jabber_id,
             mbody=self.send_chat_textinput.text)
-        self.append_chat_message("Me", self.send_chat_textinput.text)
+        self.append_chat_message("Me", self.send_chat_textinput.text, color="aaffbb")
         self.send_chat_textinput.text = ''
 
-    def append_chat_message(self, sender, message):
-        self.chat_log_label.text += "(%s) %s: %s\n" % (
-                sender,
-                datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
-                message)
+    def append_chat_message(self, sender, message, color):
+        self.chat_log_label.text += "[b](%s) [color=%s]%s[/color][/b]: %s\n" % (
+                datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                color,
+                escape_markup(sender),
+                escape_markup(message))
 
 
 class OrkivRoot(BoxLayout):
@@ -153,7 +155,7 @@ class OrkivRoot(BoxLayout):
         jabber_id = message['from'].bare
 
         chat_window = self.get_chat_window(jabber_id)
-        chat_window.append_chat_message(jabber_id, message['body'])
+        chat_window.append_chat_message(jabber_id, message['body'], color="aaaaff")
 
 
 class Orkiv(App):
