@@ -114,10 +114,14 @@ class ChatWindow(BoxLayout):
         app.xmpp.send_message(
             mto=self.jabber_id,
             mbody=self.send_chat_textinput.text)
-        self.chat_log_label.text += "(%s) Me: %s\n" % (
-                datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
-                self.send_chat_textinput.text)
+        self.append_chat_message("Me", self.send_chat_textinput.text)
         self.send_chat_textinput.text = ''
+
+    def append_chat_message(self, sender, message):
+        self.chat_log_label.text += "(%s) %s: %s\n" % (
+                sender,
+                datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+                message)
 
 
 class OrkivRoot(BoxLayout):
@@ -149,10 +153,7 @@ class OrkivRoot(BoxLayout):
         jabber_id = message['from'].bare
 
         chat_window = self.get_chat_window(jabber_id)
-        chat_window.chat_log_label.text += "(%s) %s: %s\n" % (
-                datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
-                jabber_id,
-                message['body'])
+        chat_window.append_chat_message(jabber_id, message['body'])
 
 
 class Orkiv(App):
