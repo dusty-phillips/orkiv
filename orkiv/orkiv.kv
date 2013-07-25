@@ -83,9 +83,13 @@ OrkivRoot:
         text: "chatting with " + root.jabber_id
         size_hint_y: None
         height: "40dp"
-    Label:
-        markup: True
-        id: chat_log_label
+    ScrollView:
+        Label:
+            size_hint_y: None
+            text_size: (root.width, None)
+            size: self.texture_size
+            markup: True
+            id: chat_log_label
     BoxLayout:
         size_hint_y: None
         height: "50dp"
