@@ -15,6 +15,7 @@ from kivy.uix.button import Button
 from kivy.uix.listview import ListItemButton
 from kivy.uix.boxlayout import BoxLayout
 from kivy.utils import escape_markup
+from kivy.core.audio import SoundLoader
 
 
 class EnterTextInput(TextInput):
@@ -151,6 +152,7 @@ class OrkivRoot(BoxLayout):
         super(OrkivRoot, self).__init__()
         self.buddy_list = None
         self.chat_windows = {}
+        self.in_sound = SoundLoader.load("orkiv/sounds/in.wav")
 
     def show_buddy_list(self):
         self.clear_widgets()
@@ -176,6 +178,7 @@ class OrkivRoot(BoxLayout):
 
         chat_window = self.get_chat_window(jabber_id)
         chat_window.append_chat_message(jabber_id, message['body'], color="aaaaff")
+        self.in_sound.play()
 
 
 class Orkiv(App):
