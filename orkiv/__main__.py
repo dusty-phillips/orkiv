@@ -1,3 +1,5 @@
+## Uses sound from http://www.freesound.org/people/TwistedLemon/sounds/2054/
+
 import datetime
 from kivy.app import App
 from kivy.uix.anchorlayout import AnchorLayout
