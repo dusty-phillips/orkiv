@@ -98,8 +98,9 @@ OrkivRoot:
             width: "70dp"
             text: "Buddies"
             on_release: app.root.show_buddy_list()
-        TextInput:
+        EnterTextInput:
             id: send_chat_textinput
+            on_enter_key: root.send_message()
         Button:
             size_hint_x: None
             width: "70dp"
