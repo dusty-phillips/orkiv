@@ -15,6 +15,22 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.utils import escape_markup
 
 
+class EnterTextInput(TextInput):
+    def __init__(self, **kwargs):
+        self.register_event_type("on_enter_key")
+        super(EnterTextInput, self).__init__(**kwargs)
+
+    def _keyboard_on_key_down(self, window, keycode, text, modifiers):
+        if keycode[0] == 13:  # 13 is the keycode for <enter>
+            self.dispatch("on_enter_key")
+        else:
+            super(EnterTextInput, self)._keyboard_on_key_down(
+                    window, keycode, text, modifiers)
+
+    def on_enter_key(self):
+        pass
+
+
 class ConnectionModal(ModalView):
     def __init__(self, jabber_id, password):
         super(ConnectionModal, self).__init__(auto_dismiss=False,
