@@ -99,6 +99,7 @@ class BuddyList(BoxLayout):
         super(BuddyList, self).__init__()
         self.app = Orkiv.get_running_app()
         self.list_view.adapter.data = sorted(self.app.xmpp.client_roster.keys())
+        self.new_messages = set()
 
     def roster_converter(self, index, jabberid):
         result = {
