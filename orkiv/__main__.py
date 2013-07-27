@@ -101,6 +101,10 @@ class BuddyList(BoxLayout):
         self.list_view.adapter.data = sorted(self.app.xmpp.client_roster.keys())
         self.new_messages = set()
 
+    def force_list_view_update(self):
+        self.list_view.adapter.update_for_new_data()
+        self.list_view._trigger_reset_populate()
+
     def roster_converter(self, index, jabberid):
         result = {
             "jabberid": jabberid,
