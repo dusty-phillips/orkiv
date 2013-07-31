@@ -122,10 +122,13 @@ class BuddyList(BoxLayout):
             result['status_message'] = ""
             result['online_status'] = "offline"
 
-        if index % 2:
-            result['background_color'] = (0, 0, 0, 1)
+        if jabberid in self.new_messages:
+            result['background_color'] = (0.6, 0.4, 0.6, 1)
         else:
-            result['background_color'] = (0.05, 0.05, 0.07, 1)
+            result['background_color'] = (0, 0, 0, 1)
+
+        if index % 2:
+            result['background_color'] = (x + .3 for x in result['background_color'])
 
         return result
 
