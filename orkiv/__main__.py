@@ -175,6 +175,8 @@ class OrkivRoot(BoxLayout):
     def show_buddy_chat(self, jabber_id):
         self.remove_widget(self.buddy_list)
         self.add_widget(self.get_chat_window(jabber_id))
+        self.buddy_list.new_messages.discard(jabber_id)
+        self.buddy_list.force_list_view_update()
 
     def handle_xmpp_message(self, message):
         if message['type'] not in ['normal', 'chat']:
@@ -184,6 +186,9 @@ class OrkivRoot(BoxLayout):
         chat_window = self.get_chat_window(jabber_id)
         chat_window.append_chat_message(jabber_id, message['body'], color="aaaaff")
         self.in_sound.play()
+        if chat_window not in self.children:
+            self.buddy_list.new_messages.add(jabber_id)
+            self.buddy_list.force_list_view_update()
 
 
 class Orkiv(App):
