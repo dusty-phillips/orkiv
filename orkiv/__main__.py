@@ -156,6 +156,16 @@ class ChatWindow(BoxLayout):
 
 
 class OrkivRoot(BoxLayout):
+    mode = StringProperty("narrow")
+
+    @property
+    def chat_visible(self):
+        return ChatWindow in {c.__class__ for c in self.children}
+
+    @property
+    def buddy_list_visible(self):
+        return self.buddy_list in self.children
+
     def __init__(self):
         super(OrkivRoot, self).__init__()
         self.buddy_list = None
