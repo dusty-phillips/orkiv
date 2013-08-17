@@ -205,6 +205,14 @@ class OrkivRoot(BoxLayout):
             self.buddy_list.new_messages.add(jabber_id)
             self.buddy_list.force_list_view_update()
 
+    def on_mode(self, widget, mode):
+        if mode == "narrow":
+            if self.chat_visible and self.buddy_list_visible:
+                self.remove_widget(self.buddy_list)
+        else:
+            if self.chat_visible and not self.buddy_list_visible:
+                self.add_widget(self.buddy_list, index=1)
+
 
 class Orkiv(App):
     def __init__(self):
