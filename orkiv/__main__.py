@@ -186,7 +186,9 @@ class OrkivRoot(BoxLayout):
         return self.chat_windows[jabber_id]
 
     def show_buddy_chat(self, jabber_id):
-        self.remove_widget(self.buddy_list)
+        self.clear_widgets()
+        if self.mode == "wide":
+            self.add_widget(self.buddy_list)
         self.add_widget(self.get_chat_window(jabber_id))
         self.buddy_list.new_messages.discard(jabber_id)
         self.buddy_list.force_list_view_update()
