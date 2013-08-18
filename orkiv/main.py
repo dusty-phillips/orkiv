@@ -17,6 +17,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.utils import escape_markup
 from kivy.core.audio import SoundLoader
 
+__version__ = '1.0'
+
 
 class EnterTextInput(TextInput):
     def __init__(self, **kwargs):
