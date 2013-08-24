@@ -172,7 +172,7 @@ class OrkivRoot(BoxLayout):
         super(OrkivRoot, self).__init__()
         self.buddy_list = None
         self.chat_windows = {}
-        self.in_sound = SoundLoader.load("orkiv/sounds/in.wav")
+        self.in_sound = SoundLoader.load("sounds/in.wav")
 
     def show_buddy_list(self):
         self.clear_widgets()
