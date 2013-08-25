@@ -217,8 +217,9 @@ class OrkivRoot(BoxLayout):
 
 
 class Orkiv(App):
-    def __init__(self):
+    def __init__(self, root_dir):
         super(Orkiv, self).__init__()
+        self.root_dir = root_dir
         self.xmpp = None
 
     def connect_to_jabber(self, jabber_id, password):
@@ -241,8 +242,8 @@ class Orkiv(App):
         self.disconnect_xmpp()
 
 
-def main():
-    Orkiv().run()
+def main(root_dir=""):
+    Orkiv(root_dir).run()
 
 if __name__ == "__main__":
     main()
